@@ -35,7 +35,7 @@
             @click:date="timeFocus"
           )
             v-spacer
-            v-btn(text color="primary" @click="date.menu = false") Отмена
+            v-btn(text color="primary" @click="date.menu = false") Abbrechen
 
       .v-datetime-field__time(v-if="!onlyDate")
         v-menu(
@@ -67,7 +67,7 @@
             @click:hour="setTimePickerValue"
           )
             v-spacer
-            v-btn(text color="primary" @click="time.menu = false") Отмена
+            v-btn(text color="primary" @click="time.menu = false") Abbrechen
 
     template(
       v-for="(_, name) in $scopedSlots"
@@ -146,8 +146,10 @@ export default {
     commonAttrs() {
       const { $attrs } = this || {};
       const localDatetimeErrors = [];
-      if (!this.date.validate.success) localDatetimeErrors.push('Дата введена неверно');
-      if (!this.time.validate.success) localDatetimeErrors.push('Время введено неверно');
+      if (!this.date.validate.success)
+        localDatetimeErrors.push('Datum falsch eingegeben');
+      if (!this.time.validate.success)
+        localDatetimeErrors.push('Время введено неверно');
       return {
         ...$attrs,
         'error-messages': [
